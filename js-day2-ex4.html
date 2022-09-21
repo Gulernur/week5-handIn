@@ -32,14 +32,15 @@ const cars = [
 { id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799 }
 ];
 
-const carsAsTableRows = cars.map(car =>
-    `<tr>
+const carsAsTableRows = cars.map(car => `
+    <tr>
         <td>${car.id} </td>
         <td>${car.year} </td>
         <td>${car.make} </td>
         <td>${car.model} </td>
         <td>${car.price} </td>
-    </tr>`)
+    </tr>
+`)
 const asString = carsAsTableRows.join("")
 document.getElementById("tbody").innerHTML = asString
 
