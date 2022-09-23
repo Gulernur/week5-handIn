@@ -3,20 +3,30 @@ document.getElementById("fetch-user").onclick = fetchUser;
 document.getElementById("fetch-all-users").onclick = fetchAllUsers;
 
 function fetchUser(){
-    fetch(URL)
+    const id = document.getElementById("input").value
+
+    fetch(URL + id)
         .then((r) => {
             if (!r.ok) {
                 return Promise.reject("The user could not be found in the system")
             }
             return r.json()
         })
-    /*.then(users => {
-        const con = document.getElementById("single-user")
-
-    })
-    .catch(e => {
+        .then(user => {
+        document.getElementById("single-user")
+            const tableRows = `
+                    <tr>
+                        <td>${user.name} </td>
+                        <td>${user.phone} </td>
+                        <td>${user.email} </td>
+                    </tr>
+                `
+            document.getElementById("single-user").style = "block"
+            document.getElementById("tbody").innerHTML = tableRows
+        })
+        .catch(e => {
         console.error(e)
-    })*/
+    })
 }
 
 function fetchAllUsers(){
